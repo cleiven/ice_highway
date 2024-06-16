@@ -43,7 +43,6 @@
           min = distance;
         }
       }
-      //setText("The closest stop to the coordinates you entered is " + closest + ", which is " + Math.floor(min) + " blocks away");
       closestStop = closest
       closestStopCoords = coords;
       closestStopDistance = Math.floor(min);
@@ -57,7 +56,7 @@
 
   <body>
 
-    <p>Enter the overworld coordinates you want to go to, separated by a comma.</p>
+    <p>Enter the overworld coordinates you want to go to, separated by a comma, then press enter.</p>
     <input type="text" onChange="findStop()" id="coords" placeholder="x, y"/>
   <p id="result1"> </p>
   <p id="result2"></p>
