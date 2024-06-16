@@ -7,7 +7,6 @@
   <title>replit</title>
   <link href="style.css" rel="stylesheet" type="text/css" />
   <script>
-    let text = "Hello World";
     let closestStop = "[Invalid Coords]";
     let closestStopCoords = "0,0";
     let closestStopDistance = 0;
@@ -29,9 +28,11 @@
       const stops = [
         ["Southeastern Wilderness","399,96"],
         ["Northwestern Wilderness","-50,-548"],
-        ["Scarlett's Base","-2,-236"],
-        ["Country of Harley","10,-33"],
-        ["Nice Island Nation","198,-541"]];
+        ["Scarlett's Base","-3,-238"],
+        ["Country of Harley","-22,-32"],
+        ["Nice Island Nation","193,-552"],
+        ["Matthew's Base","21,288"]
+      ];
       let closest = "[Invalid Coords]";
       let min = Infinity;
       let coords = "";
@@ -60,7 +61,7 @@
     <input type="text" onChange="findStop()" id="coords" placeholder="x, y"/>
   <p id="result1"> </p>
   <p id="result2"></p>
-  <p>Note: I am going off of screenshots for coords because the server is offline right now. Coords might be like 10-20 blocks off, and Matthew's base is missing. Expect more accuracy once I update them. I am also writing this at 2 AM so it's possible I've catastrophically screwed something up and will realize tomorrow.</p>
+  <p>Update: All stops are now added as of 16.6.24. Enjoy!</p>
   </body>
 
 </html>
