@@ -4,13 +4,28 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>replit</title>
+  <title>Ice Highway Calculator</title>
   <link href="style.css" rel="stylesheet" type="text/css" />
+  <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&family=VT323&display=swap" rel="stylesheet">
   <script>
+    const stops = [
+        ["Southeastern Wilderness","399,96", "A planes biome with a Woodland Mansion, a Bearclaw Inn, and a village nearby."],
+        ["Northwestern Wilderness","-50,-548", "A snowy forest with a Born in Chaos tower and an abandoned railcar nearby."],
+        ["Scarlett's Base","-3,-238", "The hobbit hole where Scarlett and Emmett live."],
+        ["Country of Harley","11,-20", "Sebastian's island nation. He is digging a big hole there (no one knows why)."],
+        ["Nice Island Nation","193,-552", "Elias's base. Struck by a tornado, an ice dragon, and a nuclear bomb on three unrelated occasions."],
+        ["Matthew's Base","21,288", "The first stop ever built. Featuring villagers and a skeleton farm!!"]
+      ];
     let closestStop = "[Invalid Coords]";
     let closestStopCoords = "0,0";
     let closestStopDistance = 0;
-
+    
+    function popTable() {
+        for (const stop of stops) {
+            document.getElementById("stopTable").innerHTML += "<tr>" + "<td>" + stop[0] + "</td>" + "<td>" + stop[1] + "</td>" + "<td>" + stop[1].replace(" ","").split(",")[0]*8 + "," +stop[1].replace(" ","").split(",")[1]*8 + "</td>" + "<td>" + stop[2] + "</td>" + "<td>" + "</td>" + "<tr>";
+        }
+    }
+    
     function compute_distance(x1, y1, x2, y2) {
       return Math.sqrt((x2*8 - x1) ** 2 + (y2*8 - y1) ** 2)  
     }
@@ -25,14 +40,6 @@
 
     function findStop() {
       const c1 = document.getElementById("coords").value;
-      const stops = [
-        ["Southeastern Wilderness","399,96"],
-        ["Northwestern Wilderness","-50,-548"],
-        ["Scarlett's Base","-3,-238"],
-        ["Country of Harley","11,-20"],
-        ["Nice Island Nation","193,-552"],
-        ["Matthew's Base","21,288"]
-      ];
       let closest = "[Invalid Coords]";
       let min = Infinity;
       let coords = "";
@@ -55,13 +62,22 @@
   </script>
 </head>
 
-  <body>
-
+  <body onload="popTable()">
+    <h1>Elias's Ice Highway Calculator</h1>
     <p>Enter the overworld coordinates you want to go to, separated by a comma, then press enter.</p>
     <input type="text" onChange="findStop()" id="coords" placeholder="x, y"/>
   <p id="result1"> </p>
   <p id="result2"></p>
-  <p>Update: All stops are now added as of 16.6.24. Enjoy! P.S: please let me know if any coords are slightly off.</p>
+  
+  <p>... or pick your destination from this list of all stops. </p>
+  <table id="stopTable">
+    <tr> 
+        <td> <b> Stop </b> </td>
+        <td> <b> Nether </b> </td>
+        <td> <b> Overworld </b> </td>
+        <td> <b> Description </b> </td>
+    </tr>
+  </table>
   </body>
 
 </html>
