@@ -1,0 +1,21 @@
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+h1 {
+  font-family: "VT323", sans-serif;
+  margin: auto;
+  font-size: 50px;
+  border: solid 5px;
+  background-color: #3366ff;
+}
+
+body {
+  font-family: arial;
+}
+
+input {
+  font-size: 30px;
+}
