@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>replit</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <script>
+    let text = "Hello World";
+    let closestStop = "[Invalid Coords]";
+    let closestStopCoords = "0,0";
+    let closestStopDistance = 0;
+
+    function compute_distance(x1, y1, x2, y2) {
+      return Math.sqrt((x2*8 - x1) ** 2 + (y2*8 - y1) ** 2)  
+    }
+
+
+    function compute_distance_string(c1, c2) {
+      const [x1, y1] = c1.replace(" ","").split(",");
+      const [x2, y2] = c2.replace(" ","").split(",");
+      console.log("x1: " + x1 + " y1: " + y1 + " x2: " + x2 + " y2: " + y2);
+      return compute_distance(x1, y1, x2, y2);
+    }
+
+    function findStop() {
+      const c1 = document.getElementById("coords").value;
+      const stops = [
+        ["Southeastern Wilderness","399,96"],
+        ["Northwestern Wilderness","-50,-548"],
+        ["Scarlett's Base","-2,-236"],
+        ["Country of Harley","10,-33"],
+        ["Nice Island Nation","198,-541"]];
+      let closest = "[Invalid Coords]";
+      let min = Infinity;
+      let coords = "";
+      for (const stop of stops) {
+        const distance = compute_distance_string(c1, stop[1]);
+        if (distance < min) {
+          closest = stop[0];
+          coords = stop[1];
+          min = distance;
+        }
+      }
+      //setText("The closest stop to the coordinates you entered is " + closest + ", which is " + Math.floor(min) + " blocks away");
+      closestStop = closest
+      closestStopCoords = coords;
+      closestStopDistance = Math.floor(min);
+
+      document.getElementById("result1").innerHTML = "The closest stop to the coordinates you entered is <b>" + closestStop + "</b>, which is <b>" + closestStopDistance + " blocks away through the Overworld</b>";
+      document.getElementById("result2").innerHTML = closestStop + " is located at <b>" + closestStopCoords + "</b> in the Nether, or <b>" +closestStopCoords.replace(" ","").split(",")[0]*8 + "," +closestStopCoords.replace(" ","").split(",")[1]*8+"</b> in the Overworld";
+    }
+
+  </script>
+</head>
+
+  <body>
+
+    <p>Enter the overworld coordinates you want to go to, separated by a comma.</p>
+    <input type="text" onChange="findStop()" id="coords" placeholder="x, y"/>
+  <p id="result1"> </p>
+  <p id="result2"></p>
+  <p>Note: I am going off of screenshots for coords because the server is offline right now. Coords might be like 10-20 blocks off, and Matthew's base is missing. Expect more accuracy once I update them. I am also writing this at 2 AM so it's possible I've catastrophically screwed something up and will realize tomorrow.</p>
+  </body>
+
+</html>
